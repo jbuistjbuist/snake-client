@@ -1,26 +1,16 @@
+const {movementKeys, messages} = require('./constants');
+
 let connection;
 
 const handleUserInput = function(key) {
   if (String(key) === '\u0003') {
     process.exit();
   }
-  if (key === 'w') {
-    connection.write("Move: up");
+  if (movementKeys[key]) {
+    connection.write(movementKeys[key]);
   }
-  if (key === 'a') {
-    connection.write("Move: left");
-  }
-  if (key === 's') {
-    connection.write("Move: down");
-  }
-  if (key === 'd') {
-    connection.write("Move: right");
-  }
-  if (key === 'p') {
-    connection.write('Say: Why hello there');
-  }
-  if (key === 'o') {
-    connection.write('Say: my snake is cool');
+  if (messages[key]) {
+    connection.write(messages[key]);
   }
 };
 
