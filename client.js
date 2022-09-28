@@ -6,6 +6,12 @@ const connect = function() {
   });
   //sets the type of encoding
   conn.setEncoding("utf8");
+  conn.on("connect", () => {
+    console.log("You have successully connected to the game server");
+  });
+
+  conn.write("Name: JBK");
+
   return conn;
 };
 
