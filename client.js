@@ -10,8 +10,6 @@ const connect = function() {
     console.log("You have successully connected to the game server");
   });
 
-  conn.write("Name: JBK");
-
   return conn;
 };
 
