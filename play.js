@@ -7,7 +7,26 @@ conn.on('connect', () => {
 
 conn.on("data", (data) => {
   console.log(data);
-})
+});
+
+const setupInput = function() {
+  const stdin = process.stdin;
+  stdin.setRawMode(true);
+  stdin.setEncoding("utf8");
+  stdin.resume();
+  return stdin;
+};
+
+const userInput = setupInput()
+
+const handleUserInput = function(key) {
+  if (String(key) === '\u0003') {
+    process.exit();
+  }
+};
+
+userInput.on("data", handleUserInput);
+
 
 
 
